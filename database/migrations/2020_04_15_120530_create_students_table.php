@@ -15,7 +15,16 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->date('birthdate');
+            $table->integer('num');
+            $table->string('email');
+            $table->string('password');
+            $table->unsignedBigInteger('address_id');
+
+            $table->foreign('address_id')->references('id')->on('addresses');
+
         });
     }
 
