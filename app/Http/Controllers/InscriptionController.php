@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\address;
 use App\student;
+use App\training;
+use App\folder;
 
 class InscriptionController extends Controller
 {
@@ -41,8 +43,11 @@ class InscriptionController extends Controller
             'password' => request('password'),
             'address_id' => $address->id
         ]);
-        return request('firstname')." merci de vous etre inscrit";
-        return "formulaire reçu";
+        session()->put('student', $student);
+        session('student')->apply->training->id==NULL;
+        session('student')->apply->folder->id==NULL;
+        session('student')->apply->status->id==NULL;
+        return redirect('/connexion');
     }
     
 }

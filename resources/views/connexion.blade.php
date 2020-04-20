@@ -1,6 +1,9 @@
 @extends('layout')
 @section('contenu')
-
+    <div class="head">
+        <p><a href="/">Acceuil</a></p>
+    </div>
+    
     <h1> Connexion </h1>
     <form action="/connexion" method="post">
         {{csrf_field()}}

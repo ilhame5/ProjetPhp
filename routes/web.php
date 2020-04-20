@@ -24,10 +24,15 @@ Route::post('/inscription','InscriptionController@traitement');
 Route::get('/connexion', 'ConnexionController@formulaire');
 Route::post('/connexion', 'ConnexionController@traitement');
 
-Route::get('/etudiants','StudentController@list');
+Route::get('/etudiants','StudentController@getList');
+Route::get('/editProfil','StudentController@formulaire');
+Route::post('/editProfil','StudentController@editProfil');
 
 Route::get('/formation','TrainingController@list');
-Route::post('/formation','TrainingController@TrainingSelections');
+Route::post('/ajoutFormation','TrainingController@TrainingSelections');
+
+Route::get('/candidature','FolderController@list');
+Route::post('/ajoutCandidature','FolderController@getFolder');
 
 Route::get('/mon-compte', function () {
     return view('my-account');

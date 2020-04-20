@@ -8,29 +8,34 @@ use App\student;
 class ConnexionController extends Controller
 {
     //
-    public function formulaire(){
+    public function formulaire()
+    {
         return view('connexion');
     }
 
-    public function traitement(){
+    public function traitement()
+    {
+        $email = request('email');
         request()->validate([
-            'email' => ['required','email'],
-            'password' => ['required','min:6'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:6'],
         ]);
 
         //essaye une connexion et verifie si un utilisateur existe avec ses identifiants
-        $resultat=auth()->attempt([
+        $resultat = auth()->attempt([
             'email' => request('email'),
             'password' => request('password'),
         ]);
-        echo($resultat);
-        if($resultat){
-            return redirect('/mon_compte');
-        }
-        else{
+
+        $student = student::where('email', $email)->first();
+
+        if ($resultat) {
+            session()->put('student', $student);
+            return redirect('/formation');
+        } else {
             return back()->withInput()->withErrors([
-                'email'=> 'Vos identifiants sont incorrects.'
-            ]) ;
+                'email' => 'Vos identifiants sont incorrects.'
+            ]);
         }
         return "Traitement formulaire connexion";
     }

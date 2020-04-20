@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TrainingController extends Controller
 {
-    public function list(){
+    public function list(){//getlist
         $trainings = training::all();
 
         return view('training/training', [
@@ -20,15 +20,24 @@ class TrainingController extends Controller
 
     public function TrainingSelections(Request $request){
 
-        $training=  $request->listTraining;
-        dd($training);
-
-        $enrengistrement = apply::create([
-            'student_id' => session('email'),
-            'training_id' => $training->id
+        $training_id=  $request->listTraining;
+        $session_id=session('student')->id;
+        
+        $apply= apply::where([
+            'student_id'=>$session_id
         ]);
-
-        return new Response('la formation selectionné est: '.$training);
-
+        
+        if(session('student')->apply->training->id==NULL){//si l'etudiant n'a pas deja enrengistrer une formation->OK
+            apply::create([
+                'student_id' => $session_id,
+                'training_id' => $training_id
+            ]);
+        }
+        else{//SINON on lui fait savoir et on le renvoie vers depot de dossier
+            echo 'Vous aviez deja choisi la formation '.session('student')->apply->training->name.'. Il faut maintenant que vous deposiez une candidature';   
+        }
+        return view('folder/folder', [
+            'apply' => $apply,
+        ]);
     }
 }

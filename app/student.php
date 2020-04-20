@@ -16,11 +16,11 @@ class student extends Model implements Authenticatable
     protected $fillable = ['firstname', 'lastname','birthdate','num','email','password','address_id'];//colonnes remplissable, ou on peut faire des insertions
   
     public function address(){
-        return $this->belongsTo('App\Address');//un etudiant a une add
+        return $this->belongsTo('App\address');//un etudiant a une add
     }
 
     public function apply(){
-        return $this->hasOne('App\Apply');//un etudiant a une enrengistrremnt
+        return $this->hasOne('App\apply');//un etudiant a une enrengistrremnt
     }
 
     public function setPasswordAttribute($value) {
