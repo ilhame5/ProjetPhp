@@ -7,7 +7,7 @@ use App\Helpers\StudentHelper;
 
 class StudentController extends Controller
 {
-    public function list(){
+    public function getList(){
         $students = student::all();
         return view('students/students', [
             'students' => $students,
@@ -38,6 +38,7 @@ class StudentController extends Controller
         StudentHelper::update($id,$lastname, $firstname, $birthdate, $num, $street, $city, $zipcode, $address);
         //return redirect('/formation');
         return redirect('/formation')->with(['ok' => __('Le profil a bien été mis à jour')]);
+        //return back();
     }
 
     /*public function editProfil(Student $user)

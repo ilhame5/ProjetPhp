@@ -31,8 +31,8 @@ Route::post('/editProfil','StudentController@editProfil');
 Route::get('/formation','TrainingController@list');
 Route::post('/ajoutFormation','TrainingController@TrainingSelections');
 
-Route::get('/candidature','FolderController@list');
-Route::post('/ajoutCandidature','FolderController@getFolder');
+Route::get('/candidature','FolderController@formulaire');
+Route::post('/ajoutCandidature','FolderController@traitement');
 
 Route::get('/mon-compte', function () {
     return view('my-account');

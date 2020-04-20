@@ -14,3 +14,4 @@
     </form>
         
 @endsection
+<a href="/editProfil">Profil</a>
