@@ -27,11 +27,15 @@ class TrainingController extends Controller
             'student_id'=>$session_id
         ]);
         
-        apply::create([
+        if(session('student')->apply->training->id==NULL){//si l'etudiant n'a pas deja enrengistrer une formation->OK
+            apply::create([
                 'student_id' => $session_id,
                 'training_id' => $training_id
-        ]);
-
+            ]);
+        }
+        else{//SINON on lui fait savoir et on le renvoie vers depot de dossier
+            echo 'Vous aviez deja choisi la formation '.session('student')->apply->training->name.'. Il faut maintenant que vous deposiez une candidature';   
+        }
         return view('folder/folder', [
             'apply' => $apply,
         ]);

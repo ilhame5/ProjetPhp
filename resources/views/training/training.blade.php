@@ -10,6 +10,7 @@
             <input type="radio" value ="{{ $training->id }}" name="listTraining">
             {{ $training->name }}
         @endforeach
+        
         <p><input type="submit" value="Valider"></p>
     </form>
         

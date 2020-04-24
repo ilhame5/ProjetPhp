@@ -44,7 +44,9 @@ class InscriptionController extends Controller
             'address_id' => $address->id
         ]);
         session()->put('student', $student);
-
+        //session('student')->apply->training->id==NULL;
+        //session('student')->apply->folder->id==NULL;
+        //session('student')->apply->status->id==NULL;
         return redirect('/connexion');
     }
     
