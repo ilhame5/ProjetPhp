@@ -12,6 +12,6 @@ class folder extends Model
     protected $fillable = ['cv', 'coverletter', 'screenshot','bulletin'];
 
     public function apply(){
-        return $this->hasOne('App\Apply');//un etudiant a une enrengistrremnt
+        return $this->hasOne('App\apply');//un etudiant a une enrengistrremnt
     }
 }

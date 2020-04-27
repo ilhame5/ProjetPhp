@@ -9,33 +9,47 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TrainingController extends Controller
 {
-    public function list(){//getlist
+    public function list()
+    { //getlist
         $trainings = training::all();
 
         return view('training/training', [
             'trainings' => $trainings,
         ]);
-
     }
 
-    public function TrainingSelections(Request $request){
+    public function TrainingSelections(Request $request)
+    {
+        //DOSSIER EXISTANT
+        if (isset(session('student')->apply) && session('student')->apply->folder_id != null) {
+            /*return view('folder/validation', [
+        'apply' => $apply,*/
+            return response('dossier deja validée');
+        }
 
-        $training_id=  $request->listTraining;
-        $session_id=session('student')->id;
+        $training_id =  $request->listTraining;
+        $session_id = session('student')->id;
+
+        $apply = apply::where([
+            'student_id' => $session_id
+        ])->get();
         
-        $apply= apply::where([
-            'student_id'=>$session_id
-        ]);
+        //dd(count($apply));
         
-        if(session('student')->apply->training->id==NULL){//si l'etudiant n'a pas deja enrengistrer une formation->OK
+        if (session('student')->apply == NULL && count($apply)==0) { //si l'etudiant n'a pas deja enrengistrer une formation->OK
             apply::create([
                 'student_id' => $session_id,
-                'training_id' => $training_id
+                'training_id' => $training_id,
+                'folder_id' => null,
             ]);
         }
-        else{//SINON on lui fait savoir et on le renvoie vers depot de dossier
-            echo 'Vous aviez deja choisi la formation '.session('student')->apply->training->name.'. Il faut maintenant que vous deposiez une candidature';   
+        else { //SINON on lui fait savoir et on le renvoie vers depot de dossier
+            //dd(session('student'));
+            echo 'Vous aviez deja choisi la formation ' . session('student')->apply->training->name . '. Il faut maintenant que vous deposiez une candidature';
+            //echo 'Vous aviez deja choisi une formation';
         }
+
+        //PAS DE DOSSIER
         return view('folder/folder', [
             'apply' => $apply,
         ]);

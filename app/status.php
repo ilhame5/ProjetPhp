@@ -12,6 +12,6 @@ class status extends Model
     protected $fillable = ['libelle'];
 
     public function apply(){
-        return $this->hasOne('App\Apply');//un etudiant a une enrengistrremnt
+        return $this->hasOne('App\apply');//un etudiant a une enrengistrremnt
     }
 }

@@ -13,6 +13,6 @@ class address extends Model
     protected $fillable = ['city', 'street', 'zipcode'];
     
     public function student(){
-        return $this->hasOne('App\Student');//adresse appartient à un etudiant
+        return $this->hasOne('App\student');//adresse appartient à un etudiant
     }
 }

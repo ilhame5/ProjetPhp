@@ -1,11 +1,13 @@
 @extends('layout')
 
 @section('contenu')
+ 
 
     <h1>Depot de dossier</h1>
-
+   
     <form action="/ajoutCandidature" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
+
 
     Selectionner les fichiers a importer: 
 
