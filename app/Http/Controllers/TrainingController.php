@@ -11,6 +11,7 @@ class TrainingController extends Controller
 {
     public function list()
     { //getlist
+        //var_dump(auth()->check());
         $trainings = training::all();
 
         return view('training/training', [

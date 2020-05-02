@@ -15,4 +15,7 @@
     </form>
         
 @endsection
+@if (auth()->check())
+<a href="/deconnexion" class="button">Deconnexion</a>
+@endif
 <a href="/editProfil">Profil</a>

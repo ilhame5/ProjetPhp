@@ -78,12 +78,9 @@
                     @endauth
                 </div>
             @endif
-         
+
             <div class="content">
                 @yield('contenu')
-                <div class="links">
-                    <a href="https://github.com/laravel/laravel"></a>
-                </div>
             </div>
         </div>
     </body>

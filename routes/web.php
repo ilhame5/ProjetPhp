@@ -37,3 +37,5 @@ Route::post('/ajoutCandidature','FolderController@traitement');
 Route::get('/mon-compte', function () {
     return view('my-account');
 });
+
+Route::get('/deconnexion','HomepageController@deconnexion');

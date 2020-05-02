@@ -37,6 +37,5 @@ class ConnexionController extends Controller
                 'email' => 'Vos identifiants sont incorrects.'
             ]);
         }
-        return "Traitement formulaire connexion";
     }
 }

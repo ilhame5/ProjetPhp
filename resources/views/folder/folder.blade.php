@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('contenu')
- 
 
     <h1>Depot de dossier</h1>
    
@@ -27,4 +26,7 @@
     </form>
 
 @endsection
+@if (auth()->check())
+<a href="/deconnexion" class="button">Deconnexion</a>
+@endif
 <a href="/editProfil">Profil</a>

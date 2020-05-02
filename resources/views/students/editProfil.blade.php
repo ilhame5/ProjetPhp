@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('contenu')
-   
+
     <h1>Profil</h1>
     
     <form action="/editProfil" method="post">
