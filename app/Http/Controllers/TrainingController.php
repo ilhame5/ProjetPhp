@@ -27,7 +27,7 @@ class TrainingController extends Controller
             /*return view('folder/validation', [
         'apply' => $apply,*/
             //return response('dossier deja validée');
-            return view('folder/overview',compact('candidature'));
+            return view('folder/overview',compact("candidature"));
         }
 
         $training_id =  $request->listTraining;

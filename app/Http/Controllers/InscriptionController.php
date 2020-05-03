@@ -19,6 +19,7 @@ class InscriptionController extends Controller
         request()->validate([
             'firstname' => ['required'],
             'lastname' => ['required'],
+            'idCard' => ['required'],
             'birthdate' => ['required','date'],
             'num' => ['required','numeric'],
             'street' => ['required'],
@@ -37,6 +38,7 @@ class InscriptionController extends Controller
         $student = student::create([
             'firstname' => request('firstname'),
             'lastname' => request('lastname'),
+            'idCard' => request('idCard'),
             'birthdate' => request('birthdate'),
             'num' => request('num'),
             'email' => request('email'),
@@ -44,9 +46,7 @@ class InscriptionController extends Controller
             'address_id' => $address->id
         ]);
         session()->put('student', $student);
-        //session('student')->apply->training->id==NULL;
-        //session('student')->apply->folder->id==NULL;
-        //session('student')->apply->status->id==NULL;
+
         return redirect('/connexion');
     }
     

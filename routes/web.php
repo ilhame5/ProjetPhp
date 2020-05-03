@@ -45,3 +45,4 @@ Route::get('/validation', function () {
 });
 
 Route::get('/download','FolderController@download');
+Route::get('/getdownload','FolderController@getdownload');
