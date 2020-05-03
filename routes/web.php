@@ -43,3 +43,5 @@ Route::get('/deconnexion','HomepageController@deconnexion');
 Route::get('/validation', function () {
     return view('folder/overview');
 });
+
+Route::get('/download','FolderController@download');

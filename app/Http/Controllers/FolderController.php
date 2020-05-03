@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\apply;
 use App\folder;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Validator;
+use DB;
 
 class FolderController extends Controller
 {
@@ -68,5 +70,10 @@ class FolderController extends Controller
       echo "dossier deja validé";
       return view('folder/overview',compact('candidature'));
     }
+  }
+
+  public function download(){
+      $downloads=DB::table('folders')->get();
+      return view('folder/downloadFiles',compact('downloads'));
   }
 }
