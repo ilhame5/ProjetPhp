@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout.head')
 
 @section('contenu')
     {{csrf_field()}}

@@ -27,8 +27,9 @@ class FolderController extends Controller
     $request->file('screenshot')->store('storage');
     $request->file('bulletin')->store('storage');
     
-    dd(session('student')->apply->folder_id);
-    if (!empty($request->all()) && session('student')->apply->folder_id == NULL) {// test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
+    $candidature=session('student')->apply;
+    //dd(session('student')->apply->folder_id);
+    if ((!empty($request->all())) && session('student')->apply->folder_id == NULL) {// test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
       // ça c'est si je crée un tout nouveau dossier, sinon je dois verif qu'il existe pas avant de le créer et si il existe je le recup
       $monDossier = new folder();
       if (!empty($request->hasFile('cv'))) {
@@ -54,7 +55,8 @@ class FolderController extends Controller
           'status_id' => 1,
         ]);
 
-        return response("bien enrengistré");
+        //return response("bien enrengistré");
+        return view('folder/overview',compact('monDossier'));
         // je retourne l'utilisateur vers un message quand c'est bon
 
       } catch (\Illuminate\Database\QueryException $e) {
@@ -63,7 +65,8 @@ class FolderController extends Controller
       }
     }
     else {//je dois recuperer le dossier existant
-      return response("dossier deja existant");
+      echo "dossier deja validé";
+      return view('folder/overview',compact('candidature'));
     }
   }
 }

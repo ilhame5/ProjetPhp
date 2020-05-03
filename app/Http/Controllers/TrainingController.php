@@ -21,11 +21,13 @@ class TrainingController extends Controller
 
     public function TrainingSelections(Request $request)
     {
+        $candidature=session('student')->apply;
         //DOSSIER EXISTANT
         if (isset(session('student')->apply) && session('student')->apply->folder_id != null) {
             /*return view('folder/validation', [
         'apply' => $apply,*/
-            return response('dossier deja validée');
+            //return response('dossier deja validée');
+            return view('folder/overview',compact('candidature'));
         }
 
         $training_id =  $request->listTraining;

@@ -39,3 +39,7 @@ Route::get('/mon-compte', function () {
 });
 
 Route::get('/deconnexion','HomepageController@deconnexion');
+
+Route::get('/validation', function () {
+    return view('folder/overview');
+});
