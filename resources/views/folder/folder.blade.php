@@ -119,7 +119,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Voulez-vous valider votre dossier ?</h6>
+                <h6> Une fois validé, le dossier sera envoyé au jury. Voulez-vous valider votre dossier ? </h6>
             </div>
 
             <div class="modal-footer">

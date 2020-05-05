@@ -55,7 +55,7 @@
           @foreach($trainings as $training)
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
-              <input type="radio" value="{{ $training->id }}" name="listTraining" required="required" checked>
+              <input type="radio" value="{{ $training->id }}" name="listTraining" required>
               {{ $training->name }}
             </label>
           </div>
@@ -75,13 +75,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="confirmationModalLabel">Validation dossier</h5>
+        <h5 class="modal-title" id="confirmationModalLabel">Confirmation formation</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h6>Attention vous ne pourrez postuler qu'à une formation. Etes vous sure de vouloir postuler pour la formation ?</h6>
+        <h6>Attention vous ne pourrez postuler qu'à une formation. Etes vous sure de vouloir postuler pour cette formation ?</h6>
       </div>
 
       <div class="modal-footer">
