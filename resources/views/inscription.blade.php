@@ -68,6 +68,13 @@ width:730px;
                         </div>
 
                         <div class="form-group">
+                            <input type="number" id="idCard" name="idCard" class="form-control" placeholder="Numero de CNI" value="{{old('idCard')}}">
+                            @if($errors->has('idCard'))
+                                <p>{{ $errors->first('idCard')}}</p>
+                            @endif
+                        </div>
+                       
+                        <div class="form-group">
                             <label for="birthdate">Date de naissance</label>
                             <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{old('birthdate')}}">
                             @if($errors->has('birthdate'))

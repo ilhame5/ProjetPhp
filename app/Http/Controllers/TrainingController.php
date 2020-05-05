@@ -36,9 +36,7 @@ class TrainingController extends Controller
         $apply = apply::where([
             'student_id' => $session_id
         ])->get();
-        
-        //dd(count($apply));
-        
+                
         if (session('student')->apply == NULL && count($apply)==0) { //si l'etudiant n'a pas deja enrengistrer une formation->OK
             apply::create([
                 'student_id' => $session_id,
@@ -47,9 +45,7 @@ class TrainingController extends Controller
             ]);
         }
         else { //SINON on lui fait savoir et on le renvoie vers depot de dossier
-            //dd(session('student'));
             echo 'Vous aviez deja choisi la formation ' . session('student')->apply->training->name . '. Il faut maintenant que vous deposiez une candidature';
-            //echo 'Vous aviez deja choisi une formation';
         }
 
         //PAS DE DOSSIER

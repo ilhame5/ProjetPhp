@@ -17,11 +17,13 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('idCard');
             $table->date('birthdate');
             $table->integer('num');
             $table->string('email');
             $table->string('password');
             $table->unsignedBigInteger('address_id');
+            $table->string('commentaire')->nullable();
 
             $table->foreign('address_id')->references('id')->on('addresses');
 

@@ -25,6 +25,7 @@ class FolderController extends Controller
     $request->file('coverletter')->store('storage');
     $request->file('screenshot')->store('storage');
     $request->file('bulletin')->store('storage');
+    
     $commentaire = $request->commentaire;
 
     $candidature = session('student')->apply;

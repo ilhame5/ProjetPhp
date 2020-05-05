@@ -31,7 +31,17 @@ class ConnexionController extends Controller
 
         if ($resultat) {
             session()->put('student', $student);
-            return redirect('/formation');
+            if(empty(session('student')->apply)){
+                return redirect('/formation');
+            }
+            
+            elseif(session('student')->apply->training_id != null && session('student')->apply->folder_id == null){
+                return redirect('/candidature');
+            }
+
+            elseif (isset(session('student')->apply) && session('student')->apply->folder_id != null) {
+                return redirect('/validation');
+            }
         } else {
             return back()->withInput()->withErrors([
                 'email' => 'Vos identifiants sont incorrects.'

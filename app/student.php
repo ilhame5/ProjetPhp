@@ -13,7 +13,7 @@ class student extends Model implements Authenticatable
 {
     use BasicAuthentification;
     public $timestamps = false;
-    protected $fillable = ['firstname', 'lastname','birthdate','num','email','password','address_id'];//colonnes remplissable, ou on peut faire des insertions
+    protected $fillable = ['firstname', 'lastname','birthdate','num','email','password','address_id','commentaire', 'idCard'];//colonnes remplissable, ou on peut faire des insertions
   
     public function address(){
         return $this->belongsTo('App\address');//un etudiant a une add
