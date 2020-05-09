@@ -61,50 +61,25 @@
     }
 </style>
 @section('contenu')
-<div class="container-fluid">
+<br />
+<div class="container">
     <div class="row">
 
-
-
-        <h1>Candidatures</h1>
-        </p>
-
-
-        <table class="table table-striped table-sm" id="dataTable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nom de l'etudiant</th>
-                    <th>Prenom de l'etudiant</th>
-                    <th>Dossier</th>
-                    <th>Statut</th>
-                    <th>Modifier Statut</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($applies as $apply)
-                <tr>
-                    <td>{{ $apply->student->id }}</td>
-                    <td>{{ $apply->student->lastname}}</td>
-                    <td>{{ $apply->student->firstname}}</td>
-                    <td>
-                        <a href="download" download="{{$apply}}">
-                            <button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-download">
-                                    Download
-                                </i>
-                            </button>
-                        </a>
-                    </td>
-                    <td>{{ $apply->status->libelle ?? 'non fini'}}</td>
-                    @if($apply->status!=NULL)
-                    <td> <a href="/editCandidat?student_id={{$apply->student->id}}">Modifier</a></td>
-                    <!-- <td><button class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-id="{{ $apply->status->id }}" data-name="{{ $apply->status->libelle }}">Modifier</button></td> -->
-                    @else
-                    <td></td>
-                    @endif
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @endsection
+        <div class="col-md-8 bg-light">
+            <form action="/updateCandidats" method="post" id="editForm">
+                <input type="hidden" name="id" value="{{$apply->student->id}}">
+                @csrf
+                <label for="status">Statut du dossier de {{ $apply->student->lastname}} {{ $apply->student->firstname}}</label> : <br />
+                <select class="custom-select" name="status" id="status">
+                    @foreach($statuses as $status)
+                    <option value="{{$status->id}}">{{$status->libelle}}</option>
+                    @endforeach
+                </select>
+<p>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+                <br></p>
+            </form>
+        </div>
+    </div>
+</div>
+    @endsection

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\apply;
 use App\Helpers\TeacherHelper;
+use App\status;
 use App\student;
 use App\teacher;
 use Illuminate\Http\Request;
@@ -26,12 +28,34 @@ class TeacherController extends Controller
 
     public function candidats()
     {
-        $students = student::all();
-        return view('/teacher/candidats', [
-            'students' => $students,
+        $applies = apply::all();
+        return view('teacher/candidats', [
+            'applies' => $applies,
         ]);
     }
 
+    public function candidatsEditStatus(Request $request)
+    {
+        $statuses = status::all();
+        $student_id= $request->student_id;
+        $apply= apply::where('student_id',$student_id)->first();
+
+        return view('teacher/editCandidat',compact('apply','statuses'));
+    }
+
+    public function candidatUpdateStatus(Request $request)
+    {
+        $status_id =  $request->status;
+        $student_id= $request->id;
+        $apply= apply::where('student_id',$student_id);
+
+        $apply->update([
+            'status_id' => $status_id,
+        ]);
+        $applies = apply::all();
+        return view('teacher/candidats',compact('applies'));
+    }
+    
     public function changePasswordForm()
     {
         $teacher = session('teacher');
@@ -44,10 +68,6 @@ class TeacherController extends Controller
             'password' => ['required', 'confirmed', 'min:6'],
             'password_confirmation' => ['required'],
         ]);
-
-        /*Auth::guard('admin')->update([
-            'password' => request('password'),
-        ]);*/
 
         $id = $request->id;
         $password = $request->password;

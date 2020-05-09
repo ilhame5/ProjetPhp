@@ -6,9 +6,9 @@ use App\apply;
 use App\folder;
 use App\student;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 use DB;
-use Response;
 
 
 class FolderController extends Controller
@@ -29,7 +29,8 @@ class FolderController extends Controller
     $commentaire = $request->commentaire;
 
     $candidature = session('student')->apply;
-    //dd(session('student')->apply->folder_id);
+    //dd(session('student')->apply);
+    
     if ((!empty($request->all())) && session('student')->apply->folder_id == NULL) { // test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
       // ça c'est si je crée un tout nouveau dossier, sinon je dois verif qu'il existe pas avant de le créer et si il existe je le recup
       $monDossier = new folder();
@@ -83,14 +84,12 @@ class FolderController extends Controller
 
   public function getdownload(Request $request)
   {
-    //PDF file is stored under project/public/download/info.pdf
     $filename = $request->filename;
     $file = storage_path() . "/app/storage/" . $filename;
 
     $headers = array(
       'Content-Type: application/pdf',
     );
-
     return Response::download($file, $filename, $headers);
   }
 }

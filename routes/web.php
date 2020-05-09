@@ -55,8 +55,13 @@ Route::get('/teacherInscription','Admin\RegisterController@formulaire');
 Route::post('/teacherInscription','Admin\RegisterController@traitement');
 
 Route::get('/admin/home','TeacherController@homepage');
+
 Route::get('/admin/enseignants','TeacherController@getList');
+
 Route::get('/candidats','TeacherController@candidats');
+Route::get('/editCandidat','TeacherController@candidatsEditStatus');
+Route::post('/updateCandidats','TeacherController@candidatUpdateStatus');
+
 Route::get('/changePassword','TeacherController@changePasswordForm');
 Route::post('/changePassword','TeacherController@changePassword');
 
