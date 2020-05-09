@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Espace etudiant
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,3 +46,18 @@ Route::get('/validation', function () {
 
 Route::get('/download','FolderController@download');
 Route::get('/getdownload','FolderController@getdownload');
+
+//Espace admin
+Route::get('/admin/connexion','Admin\LoginController@formulaire');
+Route::post('/admin/connexion', 'Admin\LoginController@traitement');
+Route::get('/deconnexion','HomepageController@deconnexion');
+Route::get('/teacherInscription','Admin\RegisterController@formulaire');
+Route::post('/teacherInscription','Admin\RegisterController@traitement');
+
+Route::get('/admin/home','TeacherController@homepage');
+Route::get('/admin/enseignants','TeacherController@getList');
+Route::get('/candidats','TeacherController@candidats');
+Route::get('/changePassword','TeacherController@changePasswordForm');
+Route::post('/changePassword','TeacherController@changePassword');
+
+

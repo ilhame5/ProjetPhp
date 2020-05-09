@@ -5,4 +5,5 @@
     </div>
     <h1><a href="/connexion">Deposer ma candidature</a></h1>
     <h1><a href="/inscription">M'inscrire</a></h1>
+    <h1><a href="/admin/connexion">Compte enseignant</a></h1>
 @endsection
