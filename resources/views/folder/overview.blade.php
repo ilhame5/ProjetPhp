@@ -8,8 +8,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
 
-
-<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">ESPACE ETUDIANT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +24,6 @@
     </ul>
   </div>
 </nav>
-
-</body>
 @endsection
 @section('contenu')
 <style>
@@ -96,7 +92,7 @@
 							<td>CV</td>
 							<td>{{session('student')->apply->folder->cv }}</td>
 							<td>
-							<a href="download" download="{{session('student')->apply->folder->cv}}">
+							<a href="getdownload?filename={{session('student')->apply->folder->cv}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -110,7 +106,7 @@
 							<td>Lettre de motivation</td>
 							<td>{{session('student')->apply->folder->coverletter }}</td>
 							<td>
-							<a href="download" download="{{session('student')->apply->folder->coverletter}}">
+							<a href="getdownload?filename={{session('student')->apply->folder->coverletter}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -124,7 +120,7 @@
 							<td>Capture de l'ent</td>
 							<td>{{session('student')->apply->folder->screenshot }}</td>
 							<td>
-							<a href="download" download="{{session('student')->apply->folder->screenshot}}">
+							<a href="getdownload?filename={{session('student')->apply->folder->screenshot}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -139,7 +135,7 @@
 							<td>{{session('student')->apply->folder->bulletin }}</td>
 							<td>
 							<a href="getdownload?filename={{session('student')->apply->folder->bulletin}}">
-								<button type="button" class="btn btn-primary">
+								<button type="button" class="btn btn-primary ">
 								<i class="glyphicon glyphicon-download">
 									Download
 								</i>

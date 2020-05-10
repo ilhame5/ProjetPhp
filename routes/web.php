@@ -44,7 +44,7 @@ Route::get('/validation', function () {
     return view('folder/overview');
 });
 
-Route::get('/download','FolderController@download');
+//Route::get('/download','FolderController@download');
 Route::get('/getdownload','FolderController@getdownload');
 
 //Espace admin
@@ -64,5 +64,7 @@ Route::post('/updateCandidats','TeacherController@candidatUpdateStatus');
 
 Route::get('/changePassword','TeacherController@changePasswordForm');
 Route::post('/changePassword','TeacherController@changePassword');
+
+Route::get('/getdownloadTeacher','TeacherController@getdownload');
 
 

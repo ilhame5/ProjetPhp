@@ -25,12 +25,12 @@ class FolderController extends Controller
     $request->file('coverletter')->store('storage');
     $request->file('screenshot')->store('storage');
     $request->file('bulletin')->store('storage');
-    
+
     $commentaire = $request->commentaire;
 
     $candidature = session('student')->apply;
     //dd(session('student')->apply);
-    
+
     if ((!empty($request->all())) && session('student')->apply->folder_id == NULL) { // test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
       // ça c'est si je crée un tout nouveau dossier, sinon je dois verif qu'il existe pas avant de le créer et si il existe je le recup
       $monDossier = new folder();
@@ -71,7 +71,7 @@ class FolderController extends Controller
         return response("error");
       }
     } else { //je dois recuperer le dossier existant
-      echo "dossier deja validé";
+      //echo "dossier deja validé";
       return view('folder/overview', compact('candidature'));
     }
   }
@@ -90,6 +90,6 @@ class FolderController extends Controller
     $headers = array(
       'Content-Type: application/pdf',
     );
-    return Response::download($file, $filename, $headers);
+    return response()->download($file, $filename, $headers);
   }
 }

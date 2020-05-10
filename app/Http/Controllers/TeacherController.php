@@ -76,4 +76,16 @@ class TeacherController extends Controller
         return redirect('/admin/home');
 
     }
+
+    public function getdownload(Request $request)
+    {
+      $filename = $request->filename;
+      $file = storage_path() . "/app/storage/" . $filename;
+  
+      $headers = array(
+        'Content-Type: application/pdf',
+      );
+      return response()->download($file, $filename, $headers);
+    }
+  
 }
