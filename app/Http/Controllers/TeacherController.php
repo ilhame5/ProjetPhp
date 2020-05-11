@@ -7,8 +7,10 @@ use App\Helpers\TeacherHelper;
 use App\status;
 use App\student;
 use App\teacher;
+use App\training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -37,25 +39,25 @@ class TeacherController extends Controller
     public function candidatsEditStatus(Request $request)
     {
         $statuses = status::all();
-        $student_id= $request->student_id;
-        $apply= apply::where('student_id',$student_id)->first();
+        $student_id = $request->student_id;
+        $apply = apply::where('student_id', $student_id)->first();
 
-        return view('teacher/editCandidat',compact('apply','statuses'));
+        return view('teacher/editCandidat', compact('apply', 'statuses'));
     }
 
     public function candidatUpdateStatus(Request $request)
     {
         $status_id =  $request->status;
-        $student_id= $request->id;
-        $apply= apply::where('student_id',$student_id);
+        $student_id = $request->id;
+        $apply = apply::where('student_id', $student_id);
 
         $apply->update([
             'status_id' => $status_id,
         ]);
         $applies = apply::all();
-        return view('teacher/candidats',compact('applies'));
+        return view('teacher/candidats', compact('applies'));
     }
-    
+
     public function changePasswordForm()
     {
         $teacher = session('teacher');
@@ -74,18 +76,38 @@ class TeacherController extends Controller
 
         TeacherHelper::update($id, $password);
         return redirect('/admin/home');
-
     }
 
     public function getdownload(Request $request)
     {
-      $filename = $request->filename;
-      $file = storage_path() . "/app/storage/" . $filename;
-  
-      $headers = array(
-        'Content-Type: application/pdf',
-      );
-      return response()->download($file, $filename, $headers);
+        $filename = $request->filename;
+        $file = storage_path() . "/app/storage/" . $filename;
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return response()->download($file, $filename, $headers);
     }
-  
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $training = training::where('name', 'like', '%' . $search . '%')->first();
+        $status = status::where('libelle', 'like', '%' . $search . '%')->first();
+
+        //foreach ($trainings as $training){
+        if ($training != NULL) {
+            $applies_ = apply::where('training_id', $training->id)->get();
+            $applies=$applies_;
+        }
+        if ($status != NULL) {
+            $applies_ = apply::where('status_id', $status->id)->get();
+            $applies=$applies_;
+        }
+        //$applies[]=$applie;
+        //}
+
+        //dd($applies[0]->student);
+        return view('teacher/candidats', ['applies' => $applies]);
+    }
 }

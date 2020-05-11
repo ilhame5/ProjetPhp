@@ -67,4 +67,5 @@ Route::post('/changePassword','TeacherController@changePassword');
 
 Route::get('/getdownloadTeacher','TeacherController@getdownload');
 
+Route::get('/search','TeacherController@search');
 

@@ -11,7 +11,7 @@ class status extends Model
     public $timestamps = false;
     protected $fillable = ['libelle'];
 
-    public function apply(){
+    public function applies(){
         return $this->hasOne('App\apply');//un etudiant a une enrengistrremnt
     }
 }

@@ -20,7 +20,5 @@ class StudentHelper
             'address_id' => $address
         ]);
         session()->put('student', $student);//MAJ variable de session
-        //dd(session('student'));
-        //return back()->with(['ok' => __('Le profil a bien été mis à jour')]);
     }
 }

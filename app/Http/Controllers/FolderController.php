@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\apply;
 use App\folder;
+use App\Helpers\FolderHelper;
 use App\student;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Validator;
 use DB;
-
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class FolderController extends Controller
 {
@@ -27,13 +28,21 @@ class FolderController extends Controller
     $request->file('bulletin')->store('storage');
 
     $commentaire = $request->commentaire;
-
     $candidature = session('student')->apply;
-    //dd(session('student')->apply);
+
+    $libelle = session('student')->apply->status->libelle;
+    $incomplet = "Reçu incomplet en attente de complément";
 
     if ((!empty($request->all())) && session('student')->apply->folder_id == NULL) { // test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
       // ça c'est si je crée un tout nouveau dossier, sinon je dois verif qu'il existe pas avant de le créer et si il existe je le recup
-      $monDossier = new folder();
+      if (strcmp($libelle, $incomplet) == 0) {
+        session('student')->apply->update([
+          'folder_id' => NULL,
+        ]);
+        $monDossier = FolderHelper::update($request->id, $request->cv, $request->coverletter, $request->screenshot, $request->bulletin);
+      } else {
+        $monDossier = new folder();
+      }
       if (!empty($request->hasFile('cv'))) {
         $path = $request->cv->storeAs('storage', session('student')->id . '_' . $request->cv->getClientOriginalName());
         $monDossier->cv = str_replace('storage/', '', $path);
@@ -74,12 +83,6 @@ class FolderController extends Controller
       //echo "dossier deja validé";
       return view('folder/overview', compact('candidature'));
     }
-  }
-
-  public function download()
-  {
-    $downloads = DB::table('folders')->get();
-    return view('folder/downloadFiles', compact('downloads'));
   }
 
   public function getdownload(Request $request)

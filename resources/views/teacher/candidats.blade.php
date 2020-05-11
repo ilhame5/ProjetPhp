@@ -68,10 +68,13 @@
                         <div class="col col-xs-6">
                             <h3 class="panel-title">Candidatures etudiants</h3>
                         </div>
-                        <div class="form-group pull-right">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <div class="col-md-4">
+                            <form action="/search" method="get">
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <input type="search" name="search" class="form-control">
+                                        <button type="submit" class="btn-btn-primary" placeholder="Intitulé complet">Search</button>
+                                    </span>
                             </form>
                         </div>
                     </div>
@@ -171,26 +174,6 @@
                                 @endif
 
                             </tr>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Commentaire au dossier</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <span id="deleteGroupName"></span>
-                                            <p>{{$apply->student->commentaire}}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -199,15 +182,33 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Commentaire au dossier</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span id="studentCommentaire"></span>
+                <p>{{$apply->student->commentaire}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+    $('#exampleModal').on('show.bs.modal', function(e) {
+        var id = $(e.relatedTarget).data('id');
+        var name = $(e.relatedTarget).data('commentaire');
 
-$('#deleteModal').on('show.bs.modal', function(e) {
-    var id = $(e.relatedTarget).data('id');
-    var name = $(e.relatedTarget).data('name');
-
-    $("#deleteId").val(id);
-    $("#deleteGroupName").text(name);
-  });
+        $("#deleteId").val(id);
+        $("#studentCommentaire").text(name);
+    });
 </script>
 @endsection
