@@ -95,19 +95,20 @@ class TeacherController extends Controller
         $training = training::where('name', 'like', '%' . $search . '%')->first();
         $status = status::where('libelle', 'like', '%' . $search . '%')->first();
 
-        //foreach ($trainings as $training){
+        //dd($training);
         if ($training != NULL) {
             $applies_ = apply::where('training_id', $training->id)->get();
-            $applies=$applies_;
+            $applies = $applies_;
         }
-        if ($status != NULL) {
-            $applies_ = apply::where('status_id', $status->id)->get();
-            $applies=$applies_;
+        else if ($status != NULL) {
+            if (!empty($status)) {
+                $applies_ = apply::where('status_id', $status->id)->get();
+                $applies = $applies_;
+            }
         }
-        //$applies[]=$applie;
-        //}
-
-        //dd($applies[0]->student);
+        else{
+            return redirect()->back() ->with('alert', 'Not exist');
+        }
         return view('teacher/candidats', ['applies' => $applies]);
     }
 }

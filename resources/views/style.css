@@ -1,0 +1,54 @@
+body {
+    font-family:arial;
+    padding:0;
+    margin: 0;
+  }
+  header {
+    color: #ddd;
+    text-align:center;
+    padding: 150px;
+    background:url(https://www.wf3.fr/wp-content/uploads/2018/09/home-hero.jpg);
+    background-size:cover;
+  }
+  nav {
+    display:flex;
+    justify-content: space-around;
+    padding:20px;
+    background:black;
+    color: white;
+    position:fixed;
+    top:0;
+    width:100%
+  }
+  nav a {
+    color: white;
+    text-decoration:none;
+  }
+  main {
+    width:1100px;
+    margin: auto;
+  }
+  
+  section {
+    padding:50px;
+  }
+  section h2 {
+      text-align:center
+  }
+  
+  ul {
+    display:flex;
+    justify-content:space-around;
+    
+  }
+  li {
+    list-style:none;
+    text-alig:center;
+  }
+  
+  footer {
+    display:flex;
+    justify-content:space-around;
+    padding:50px;
+    background: #eee
+  }

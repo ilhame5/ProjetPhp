@@ -72,8 +72,8 @@
                             <form action="/search" method="get">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
-                                        <input type="search" name="search" class="form-control">
-                                        <button type="submit" class="btn-btn-primary" placeholder="Intitulé complet">Search</button>
+                                        <input type="search" name="search" class="form-control" placeholder="Intitulé complet">
+                                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                                     </span>
                             </form>
                         </div>
@@ -168,7 +168,6 @@
 
                                 @if($apply->status!=NULL)
                                 <td> {{ $apply->status->libelle ?? 'Non fini'}} <br> <a href="/editCandidat?student_id={{$apply->student->id}}">Modifier</a></td>
-                                <!-- <td><button class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-id="{{ $apply->status->id }}" data-name="{{ $apply->status->libelle }}">Modifier</button></td> -->
                                 @else
                                 <td>Non fini</td>
                                 @endif
