@@ -39,9 +39,9 @@
 
   }
 </style>
-
-<div class="container">
-  <div class="row">
+<center>
+<div class="container" >
+  <div class="row" align="justify">
     <div class="col-sm-8 col-sm-offset-2 well">
       <div class="col-sm-12 form-legend">
         <h2>Connexion</h2>
@@ -73,5 +73,7 @@
     </div>
   </div>
 </div>
+</center>
+
 
 @endsection
