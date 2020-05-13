@@ -4,7 +4,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ESPACE ADMIN</a>
+    <a class="navbar-brand" href="#">ESPACE ADMIN/ENSEIGNANT</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,26 +23,9 @@
 </body>
 @endsection
 @section('contenu')
-<style>
-  .well {
-    margin-top: 2%;
-  }
-
-  .form-legend {
-    padding-bottom: 2em;
-  }
-
-  div#form {
-
-    margin: auto;
-    width: 730px;
-
-  }
-</style>
-<center>
-<div class="container" >
-  <div class="row" align="justify">
-    <div class="col-sm-8 col-sm-offset-2 well">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 well" id="global">
       <div class="col-sm-12 form-legend">
         <h2>Connexion</h2>
       </div>
@@ -73,7 +56,23 @@
     </div>
   </div>
 </div>
-</center>
-
-
 @endsection
+
+<style>
+  .well {
+    margin-top: 2%;
+    font-family: Georgia, serif;
+  }
+
+  .form-legend {
+    padding-bottom: 2em;
+  }
+
+  #global {
+    font-family: Georgia, serif;
+    background-color: #FAFAFA;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+</style>

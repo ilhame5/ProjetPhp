@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="number" id="idCard" name="idCard" class="form-control" placeholder="Numero de CNI" value="{{old('idCard')}}">
+                        <input type="number" id="idCard" name="idCard" class="form-control" placeholder="Numero de carte d’identité" value="{{old('idCard')}}">
                         @if($errors->has('idCard'))
                         <p class="text-danger">{{ $errors->first('idCard')}}</p>
                         @endif

@@ -21,7 +21,7 @@ class RegisterController extends Controller
     public function traitement(){
         request()->validate([
             'email' => ['required','email','unique:teachers'],
-            'password' => ['required'],
+            'password' => ['required','min:6'],
         ]);
     
         $teacher = teacher::create([

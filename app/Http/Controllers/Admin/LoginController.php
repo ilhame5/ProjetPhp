@@ -33,7 +33,7 @@ class LoginController extends Controller
         $email = request('email');
         request()->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'password' => ['required','min:6'],
         ]);
 
         //essaye une connexion et verifie si un utilisateur existe avec ses identifiants
@@ -46,7 +46,6 @@ class LoginController extends Controller
         //dd(Auth::guard($student));
         if ($resultat) { //si un teacher existe avec ces identifiants ->ok
             session()->put('teacher', $teacher);
-            echo "ca marche";
             return redirect('admin/home');
         } else { //sinon on renvoie vers le form
             return back()->withInput()->withErrors([
