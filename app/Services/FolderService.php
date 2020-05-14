@@ -7,7 +7,7 @@ use App\folder;
 class FolderService
 {
 
-    public static function update($id, $cv, $coverletter, $screenshot, $bulletin)
+    public static function update($cv, $coverletter, $screenshot, $bulletin)
     {
         $folder = Folder::find($id);
         $folder->update([

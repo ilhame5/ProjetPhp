@@ -31,10 +31,10 @@
 
 					<tbody>
 						<tr>
-							<td>{{session('student')->apply->folder->id}}</td>
-							<td>{{session('student')->apply->folder->cv }}</td>
+							<td>{{auth()->user()->apply->folder->id}}</td>
+							<td>{{auth()->user()->apply->folder->cv }}</td>
 							<td>
-							<a href="download" download="{{session('student')->apply->folder->cv}}">
+							<a href="download" download="{{auth()->user()->apply->folder->cv}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -45,10 +45,10 @@
 						</tr>
 
 						<tr>
-							<td>{{session('student')->apply->folder->id}}</td>
-							<td>{{session('student')->apply->folder->coverletter }}</td>
+							<td>{{auth()->user()->apply->folder->id}}</td>
+							<td>{{auth()->user()->apply->folder->coverletter }}</td>
 							<td>
-							<a href="download/{{session('student')->apply->folder->coverletter}}" download="{{session('student')->apply->folder->coverletter}}">
+							<a href="download/{{auth()->user()->apply->folder->coverletter}}" download="{{auth()->user()->apply->folder->coverletter}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -59,10 +59,10 @@
 						</tr>
 
 						<tr>
-							<td>{{session('student')->apply->folder->id}}</td>
-							<td>{{session('student')->apply->folder->screenshot }}</td>
+							<td>{{auth()->user()->apply->folder->id}}</td>
+							<td>{{auth()->user()->apply->folder->screenshot }}</td>
 							<td>
-							<a href="download/{{session('student')->apply->folder->screenshot}}" download="{{session('student')->apply->folder->screenshot}}">
+							<a href="download/{{auth()->user()->apply->folder->screenshot}}" download="{{auth()->user()->apply->folder->screenshot}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download
@@ -73,10 +73,10 @@
 						</tr>
 
 						<tr>
-							<td>{{session('student')->apply->folder->id}}</td>
-							<td>{{session('student')->apply->folder->bulletin }}</td>
+							<td>{{auth()->user()->apply->folder->id}}</td>
+							<td>{{auth()->user()->apply->folder->bulletin }}</td>
 							<td>
-							<a href="download/{{session('student')->apply->folder->bulletin}}" download="{{session('student')->apply->folder->bulletin}}">
+							<a href="download/{{auth()->user()->apply->folder->bulletin}}" download="{{auth()->user()->apply->folder->bulletin}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
 									Download

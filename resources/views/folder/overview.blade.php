@@ -62,12 +62,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{ session('student')->lastname }}</td>
-					<td>{{ session('student')->firstname }}</td>
-					<td>{{ session('student')->email }}</td>
-					<td>{{ session('student')->apply->training->name }}</td>
+					<td>{{ auth()->user()->lastname }}</td>
+					<td>{{ auth()->user()->firstname }}</td>
+					<td>{{ auth()->user()->email }}</td>
+					<td>{{ auth()->user()->apply->training->name }}</td>
 					<td>5 pieces jointes</td>
-					<td>{{ session('student')->apply->status->libelle }}</td>
+					<td>{{ auth()->user()->apply->status->libelle }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -92,9 +92,9 @@
 					<tbody>
 						<tr>
 							<td>CV</td>
-							<td>{{session('student')->apply->folder->cv }}</td>
+							<td>{{auth()->user()->apply->folder->cv }}</td>
 							<td>
-								<a href="getdownload?filename={{session('student')->apply->folder->cv}}">
+								<a href="getdownload?filename={{auth()->user()->apply->folder->cv}}">
 									<button type="button" class="btn btn-primary">
 										<i class="glyphicon glyphicon-download">
 											Download
@@ -106,9 +106,9 @@
 
 						<tr>
 							<td>Lettre de motivation</td>
-							<td>{{session('student')->apply->folder->coverletter }}</td>
+							<td>{{auth()->user()->apply->folder->coverletter }}</td>
 							<td>
-								<a href="getdownload?filename={{session('student')->apply->folder->coverletter}}">
+								<a href="getdownload?filename={{auth()->user()->apply->folder->coverletter}}">
 									<button type="button" class="btn btn-primary">
 										<i class="glyphicon glyphicon-download">
 											Download
@@ -120,9 +120,9 @@
 
 						<tr>
 							<td>Capture de l'ent</td>
-							<td>{{session('student')->apply->folder->screenshot }}</td>
+							<td>{{auth()->user()->apply->folder->screenshot }}</td>
 							<td>
-								<a href="getdownload?filename={{session('student')->apply->folder->screenshot}}">
+								<a href="getdownload?filename={{auth()->user()->apply->folder->screenshot}}">
 									<button type="button" class="btn btn-primary">
 										<i class="glyphicon glyphicon-download">
 											Download
@@ -134,9 +134,9 @@
 
 						<tr>
 							<td>Bulletins</td>
-							<td>{{session('student')->apply->folder->bulletin }}</td>
+							<td>{{auth()->user()->apply->folder->bulletin }}</td>
 							<td>
-								<a href="getdownload?filename={{session('student')->apply->folder->bulletin}}">
+								<a href="getdownload?filename={{auth()->user()->apply->folder->bulletin}}">
 									<button type="button" class="btn btn-primary ">
 										<i class="glyphicon glyphicon-download">
 											Download
@@ -147,9 +147,9 @@
 						</tr>
 						<tr>
 							<td>Formulaire d'inscription</td>
-							<td>{{session('student')->apply->folder->registrationForm }}</td>
+							<td>{{auth()->user()->apply->folder->registrationForm }}</td>
 							<td>
-								<a href="getdownload?filename={{session('student')->apply->folder->registrationForm}}">
+								<a href="getdownload?filename={{auth()->user()->apply->folder->registrationForm}}">
 									<button type="button" class="btn btn-primary ">
 										<i class="glyphicon glyphicon-download">
 											Download

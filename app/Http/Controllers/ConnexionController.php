@@ -28,20 +28,26 @@ class ConnexionController extends Controller
         ]);
 
         $student = student::where('email', $email)->first();
+        $libelle = auth()->user()->apply->status->libelle;
+        $incomplet = "Reçu incomplet en attente de complément";
 
         if ($resultat) {
             session()->put('student', $student);
-            if(empty(session('student')->apply)){
+            if(empty(auth()->user()->apply)){
                 return redirect('/formation');
             }
+            elseif (isset(auth()->user()->apply) && auth()->user()->apply->folder_id != null && (strcmp($libelle, $incomplet) == 0)) {
+                return redirect('/candidature');
+            }
             
-            elseif(session('student')->apply->training_id != null && session('student')->apply->folder_id == null){
+            elseif(auth()->user()->apply->training_id != null && auth()->user()->apply->folder_id == null){
                 return redirect('/candidature');
             }
 
-            elseif (isset(session('student')->apply) && session('student')->apply->folder_id != null) {
+            elseif (isset(auth()->user()->apply) && auth()->user()->apply->folder_id != null) {
                 return redirect('/validation');
             }
+
         } else {
             return back()->withInput()->withErrors([
                 'email' => 'Vos identifiants sont incorrects.'
