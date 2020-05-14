@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\apply;
 use App\folder;
-use App\Helpers\FolderHelper;
+use App\Services\FolderHelper;
 use App\student;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -26,23 +26,15 @@ class FolderController extends Controller
     $request->file('coverletter')->store('storage');
     $request->file('screenshot')->store('storage');
     $request->file('bulletin')->store('storage');
+    $request->file('registrationForm')->store('storage');
 
     $commentaire = $request->commentaire;
     $candidature = session('student')->apply;
 
-    $libelle = session('student')->apply->status->libelle;
-    $incomplet = "Reçu incomplet en attente de complément";
-
     if ((!empty($request->all())) && session('student')->apply->folder_id == NULL) { // test si le folder n'existe pas (==null) cad qu'il n'a pas encore été créer
       // ça c'est si je crée un tout nouveau dossier, sinon je dois verif qu'il existe pas avant de le créer et si il existe je le recup
-      if (strcmp($libelle, $incomplet) == 0) {
-        session('student')->apply->update([
-          'folder_id' => NULL,
-        ]);
-        $monDossier = FolderHelper::update($request->id, $request->cv, $request->coverletter, $request->screenshot, $request->bulletin);
-      } else {
-        $monDossier = new folder();
-      }
+      $monDossier = new folder();
+
       if (!empty($request->hasFile('cv'))) {
         $path = $request->cv->storeAs('storage', session('student')->id . '_' . $request->cv->getClientOriginalName());
         $monDossier->cv = str_replace('storage/', '', $path);
@@ -59,29 +51,39 @@ class FolderController extends Controller
         $path = $request->bulletin->storeAs('storage', session('student')->id . '_' . $request->bulletin->getClientOriginalName());
         $monDossier->bulletin = str_replace('storage/', '', $path);
       }
+      if (!empty($request->hasFile('registrationForm'))) {
+        $path = $request->bulletin->storeAs('storage', session('student')->id . '_' . $request->registrationForm->getClientOriginalName());
+        $monDossier->registrationForm = str_replace('storage/', '', $path);
+      }
 
       session('student')->update([
         'commentaire' => $commentaire,
       ]);
 
-      try {
+      try { //enrenstrement du dossier et on met le statut à recu
         $monDossier->save();
         session('student')->apply->update([
           'folder_id' => $monDossier->id,
           'status_id' => 1,
         ]);
-
-        //return response("bien enrengistré");
+        // Dossier bien enrengistré, je retourne l'utilisateur vers le recapitulatif
         return view('folder/overview', compact('monDossier'));
-        // je retourne l'utilisateur vers un message quand c'est bon
-
       } catch (\Illuminate\Database\QueryException $e) {
         // traitement erreur
         return response("error");
       }
-    } else { //je dois recuperer le dossier existant
-      //echo "dossier deja validé";
-      return view('folder/overview', compact('candidature'));
+    } else { //Dossier deja validé, je dois recuperer le dossier existant
+
+      $libelle = session('student')->apply->status->libelle;
+      $incomplet = "Reçu incomplet en attente de complément";
+      if (strcmp($libelle, $incomplet) == 0) {
+        session('student')->apply->update([
+          'folder_id' => NULL,
+        ]);
+        $monDossier = FolderHelper::update($request->id, $request->cv, $request->coverletter, $request->screenshot, $request->bulletin);
+      } else {
+        return view('folder/overview', compact('candidature'));
+      }
     }
   }
 

@@ -21,14 +21,13 @@ class RegisterController extends Controller
     public function traitement(){
         request()->validate([
             'email' => ['required','email','unique:teachers'],
-            'password' => ['required','min:6'],
+            'password' => ['required','min:5'],
         ]);
     
         $teacher = teacher::create([
             'email' => request('email'),
             'password' => request('password'),
         ]);
-        session()->put('teacher', $teacher);
 
         return redirect('/admin/enseignants');
     }

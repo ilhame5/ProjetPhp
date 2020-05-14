@@ -33,7 +33,7 @@ class LoginController extends Controller
         $email = request('email');
         request()->validate([
             'email' => ['required', 'email'],
-            'password' => ['required','min:6'],
+            'password' => ['required'],
         ]);
 
         //essaye une connexion et verifie si un utilisateur existe avec ses identifiants

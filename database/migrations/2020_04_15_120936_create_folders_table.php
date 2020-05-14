@@ -19,6 +19,7 @@ class CreateFoldersTable extends Migration
             $table->string('coverletter');
             $table->string('screenshot');
             $table->string('bulletin');
+            $table->string('registrationForm');
         });
     }
 

@@ -45,48 +45,74 @@
 @endsection
 
 @section('contenu')
+<div id="global">
+    </br>
+    <h2>Liste enseignants</h2>
+    </br>
+    <table class="table table-striped table-sm" id="customers" >
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom de l'enseignant</th>
+                <th class="not-export-col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($teachers as $teacher)
+            <tr>
+                <td>{{ $teacher->id }}</td>
+                <td>{{ $teacher->email}}</td>
+                <td class="not-export-col"><button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{ $teacher->id }}" data-name="{{ $teacher->email }}">Supprimer</button></td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
+
 <style>
     .well {
         margin-top: 2%;
+        font-family: Georgia, serif;
     }
 
     .form-legend {
         padding-bottom: 2em;
     }
 
-    div#form {
-
-        margin: auto;
-        width: 730px;
+    #global {
+        font-family: Georgia, serif;
+        margin-right: auto;
+        width: 100%;
+        margin-left: 50px;
 
     }
+
+    #customers {
+        border-collapse: collapse;
+        width: 70%;
+       
+    }
+
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #655f5c;
+        color: white;
+    }
 </style>
-
-@section('contenu')
-
-<h1>Les enseignants</h1>
-</p>
-<button class="btn btn-success" id="btnAdd" data-toggle="modal" data-target="#addModal">Ajouter</button>
-</p>
-
-<table class="table table-striped table-sm" id="dataTable">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nom de l'enseignant</th>
-            <th class="not-export-col">Modifier</th>
-            <th class="not-export-col">Supprimer</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($teachers as $teacher)
-        <tr>
-            <td>{{ $teacher->id }}</td>
-            <td>{{ $teacher->email}}</td>
-            <td class="not-export-col"><button class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-id="{{ $teacher->id }}" data-name="{{ $teacher->email }}">Modifier</button></td>
-            <td class="not-export-col"><button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{ $teacher->id }}" data-name="{{ $teacher->email }}">Supprimer</button></td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-@endsection

@@ -43,23 +43,6 @@
 </body>
 @endsection
 @section('contenu')
-<style>
-    .well {
-        margin-top: 2%;
-    }
-
-    .form-legend {
-        padding-bottom: 2em;
-    }
-
-    div#form {
-
-        margin: auto;
-        width: 730px;
-
-    }
-</style>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 well">
@@ -76,7 +59,7 @@
                                 <div class="form-group">
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                                     @if($errors->has('email'))
-                                    <p>{{ $errors->first('email')}}</p>
+                                    <p class="text-danger">{{ $errors->first('email')}}</p>
                                     @endif
                                 </div>
 
@@ -84,11 +67,11 @@
                                     <label for="password">Mot de passe</label>
                                     <input type="password" id="password" name="password" class="form-control" placeholder="Minimum 5 caracteres">
                                     @if($errors->has('password'))
-                                    <p>{{ $errors->first('password')}}</p>
+                                    <p class="text-danger">{{ $errors->first('password')}}</p>
                                     @endif
                                 </div>
 
-                                <input type="submit" value="M'inscrire" class="btn btn-primary">
+                                <input type="submit" value="Ajouter" class="btn btn-primary">
                             </form>
                         </div>
                     </div>
@@ -98,3 +81,22 @@
     </div>
 </div>
 @endsection
+
+<style>
+    .well {
+        margin-top: 2%;
+        font-family: Georgia, serif;
+    }
+
+    .form-legend {
+        padding-bottom: 2em;
+    }
+
+    #global {
+        font-family: Georgia, serif;
+        background-color: #FAFAFA;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+</style>

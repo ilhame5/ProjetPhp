@@ -3,8 +3,6 @@
 @section('contenu')
 
     <h1>Les etudiants</h1>
-   
-
 
     <table class="table table-striped table-sm" id="dataTable">
     <thead>

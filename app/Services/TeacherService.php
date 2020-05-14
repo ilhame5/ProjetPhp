@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use App\teacher;
 
-class TeacherHelper
+class TeacherService
 {
     public static function update($id, $password)
     {

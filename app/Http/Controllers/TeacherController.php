@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\apply;
-use App\Helpers\TeacherHelper;
+use App\Services\TeacherHelper;
 use App\status;
 use App\student;
 use App\teacher;

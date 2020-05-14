@@ -41,46 +41,28 @@
 </nav>
 @endsection
 
-<style>
-    .well {
-        margin-top: 2%;
-    }
-
-    .form-legend {
-        padding-bottom: 2em;
-    }
-
-    div#form {
-
-        margin: auto;
-        width: 730px;
-
-    }
-</style>
 @section('contenu')
-<div class="container-fluid">
+<div class="container-fluid" >
     <br>
     <div class="row">
-        <div class="col-md-10 col-md-offset-3">
+        <div class="col-md-10 col-md-offset-3" id="global">
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col col-xs-6">
-                            <h3 class="panel-title">Candidatures etudiants</h3>
+                            <h2 class="panel-title">Liste candidatures</h2>
                         </div>
                         <div class="col-md-4">
                             <form action="/search" method="get">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
+                                <div class="input-group" >
                                         <input type="search" name="search" class="form-control" placeholder="Intitulé complet">
                                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
-                                    </span>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-striped table-bordered table-list">
+                <div class="panel-body" style="text-align:center;">
+                    <table class="table table-striped table-bordered table-list" id="customers" style="text-align:center;">
 
                         <thead>
                             <tr>
@@ -144,7 +126,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="getdownloadTeacher?filename={{$apply->folder->bulletin}}">
+                                    <a href="getdownloadTeacher?filename={{$apply->folder->registrationForm}}">
                                         <button type="button" class="btn btn-info btn-sm">
                                             <i class="btn btn-info btn-sm">
                                                 Download
@@ -171,7 +153,6 @@
                                 @else
                                 <td>Non fini</td>
                                 @endif
-
                             </tr>
                             @endforeach
                         </tbody>
@@ -181,7 +162,6 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -211,3 +191,54 @@
     });
 </script>
 @endsection
+
+
+<style>
+    .well {
+        margin-top: 2%;
+    }
+
+    .form-legend {
+        padding-bottom: 2em;
+    }
+    #global {
+        font-family: Georgia, serif;
+        margin-left: 50px;
+        margin-right: auto;
+        width: 100%;
+    }
+    #navbar{
+        margin-right: 50px;
+        width: 100%;
+    }
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 110%;
+    }
+
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #655f5c;
+        color: white;
+    }
+</style>
+
+
+

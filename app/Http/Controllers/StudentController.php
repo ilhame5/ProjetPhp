@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\student;
 use Illuminate\Http\Request;
-use App\Helpers\StudentHelper;
+use App\Services\StudentService;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -15,12 +16,7 @@ class StudentController extends Controller
     }
 
     public function formulaire(){
-        /*$session_id=session('student')->id;
-        
-        $student= student::where([
-            'student_id'=>$session_id
-        ]);*/
-        $student=session('student');
+        $student= auth()->user();
         return view('students/editProfil',compact('student'));
     }
 
@@ -35,38 +31,9 @@ class StudentController extends Controller
         $zipcode=$request->zipcode;
         $address= $request->addressid;
 
-        StudentHelper::update($id,$lastname, $firstname, $birthdate, $num, $street, $city, $zipcode, $address);
-        //return redirect('/formation');
-        return redirect('/formation')->with(['ok' => __('Le profil a bien été mis à jour')]);
-        //return back();
+        Auth::user()->address->update(['zipcode'=>$zipcode, 'street'=>$street, 'city'=>$city]);
+
+        StudentService::update($id,$lastname, $firstname, $birthdate, $num);
+        return redirect('/candidature');
     }
-
-    /*public function editProfil(Student $user)
-    {
-    if (auth()->guest()) {
-        flash("Vous devez être connecté pour voir cette page.")->error();
-        return redirect('/connexion');
-    }
-
-    request()->validate([
-        'firstname' => ['required'],
-        'lastname' => ['required'],
-        'birthdate' => ['required','date'],
-        'num' => ['required','numeric'],
-        'street' => ['required'],
-        'zipcode' => ['required','numeric'],
-        'city' => ['required'],
-        ]);
-
-    auth()->user()->update([
-        'firstname' => request('firstname'),
-        'lastname' => request('lastname'),
-        'birthdate' => request('birthdate'),
-    ]);
-
-    flash("Votre profil a bien ete mis à jour.")->success();
-
-    return redirect('/formation');
-    // À faire : modifier l'utilisateur
-}*/
 }

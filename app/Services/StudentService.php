@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use App\student;
 
-class StudentHelper
+class StudentService
 {
-    public static function update($id, $lastname, $firstname, $birthdate, $num, $street, $city, $zipcode, $address)
+    public static function update($id, $lastname, $firstname, $birthdate, $num)
     {
         $student = Student::find($id);
         $student->update([
@@ -14,11 +14,12 @@ class StudentHelper
             'firstname' => $firstname, 
             'birthdate' => $birthdate, 
             'num' => $num, 
-            'street' => $street, 
-            'city' => $city, 
-            'zipcode' => $zipcode,
-            'address_id' => $address
+            //'street' => $street, 
+            //'city' => $city, 
+            //'zipcode' => $zipcode,
+            //'address_id' => $address
         ]);
+        //auth()->user();
         session()->put('student', $student);//MAJ variable de session
     }
 }

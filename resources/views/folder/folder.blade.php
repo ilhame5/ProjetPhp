@@ -20,7 +20,7 @@
                     <a class="nav-link" href="/editProfil">Profil </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/formation">Dossier <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/candidature">Dossier <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -29,23 +29,6 @@
 </body>
 @endsection
 @section('contenu')
-
-<style>
-    .well {
-        margin-top: 4%;
-    }
-
-    .form-legend {
-        padding-bottom: 2em;
-    }
-
-    div#form {
-
-        margin: auto;
-        width: 730px;
-
-    }
-</style>
 <div class="container">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 well">
@@ -74,6 +57,11 @@
                     <div class="form-group">
                         <label for="bulletin">Choisissez un bulletin:</label>
                         <input id="bulletin" name="bulletin" class="form-control-file" type="file" required accept="application/pdf" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registrationForm">Choisissez le formulaire d’inscription rempli :</label>
+                        <input id="registrationForm" name="registrationForm" class="form-control-file" type="file" required accept="application/pdf" />
                     </div>
 
                     <div class="form-group">
@@ -119,7 +107,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h6> Une fois validé, le dossier sera envoyé au jury. Voulez-vous valider votre dossier ? </h6>
+                <h6> Une fois validé, le dossier sera envoyé pour traitement. Voulez-vous valider votre dossier ? </h6>
             </div>
 
             <div class="modal-footer">
@@ -129,6 +117,21 @@
         </div>
     </div>
 </div>
-
-
 @endsection
+
+<style>
+    .well {
+        margin-top: 4%;
+    }
+
+    .form-legend {
+        padding-bottom: 2em;
+    }
+
+    div#form {
+
+        margin: auto;
+        width: 730px;
+
+    }
+</style>

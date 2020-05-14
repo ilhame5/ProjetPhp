@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use App\folder;
 
-class FolderHelper
+class FolderService
 {
 
     public static function update($id, $cv, $coverletter, $screenshot, $bulletin)

@@ -20,8 +20,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/deconnexion">Deconnexion </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Changepassword">Modifier mot de passe</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Changepassword">Modifier mot de passe <span class="sr-only">(current)</span></a>
                 </li>
                 @if(session('teacher')->email=="admin@parisnanterre.fr")
                 <li class="nav-item">
@@ -29,8 +29,8 @@
                 </li>
                 @endif
                 @if(session('teacher')->email=="admin@parisnanterre.fr")
-                <li class="nav-item active">
-                    <a class="nav-link" href="/teacherInscription">Ajout enseignant <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/teacherInscription">Ajout enseignant</a>
                 </li>
                 @endif
                 <li class="nav-item">
@@ -43,23 +43,6 @@
 </body>
 @endsection
 @section('contenu')
-<style>
-    .well {
-        margin-top: 2%;
-    }
-
-    .form-legend {
-        padding-bottom: 2em;
-    }
-
-    div#form {
-
-        margin: auto;
-        width: 730px;
-
-    }
-</style>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 well">
@@ -78,7 +61,7 @@
                                     <label for="password">Nouveau mot de passe </label>
                                     <input type="password" id="password" name="password" class="form-control" placeholder="Minimum 5 caracteres">
                                     @if($errors->has('password'))
-                                    <p>{{ $errors->first('password')}}</p>
+                                    <p class="text-danger">{{ $errors->first('password')}}</p>
                                     @endif
                                 </div>
 
@@ -86,7 +69,7 @@
                                     <label for="password">Mot de passe (confirmation)</label>
                                     <input type="password" id="password" name="password_confirmation" class="form-control">
                                     @if($errors->has('password_confirmation'))
-                                    <p>{{ $errors->first('password_confirmation')}}</p>
+                                    <p class="text-danger">{{ $errors->first('password_confirmation')}}</p>
                                     @endif
                                 </div>
 
@@ -100,3 +83,22 @@
     </div>
 </div>
 @endsection
+
+<style>
+  .well {
+    margin-top: 2%;
+    font-family: Georgia, serif;
+  }
+
+  .form-legend {
+    padding-bottom: 2em;
+  }
+
+  #global {
+    font-family: Georgia, serif;
+    background-color: #FAFAFA;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+</style>

@@ -44,6 +44,30 @@
 </body>
 @endsection
 
+@section('contenu')
+<br />
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 bg-light">
+            <form action="/updateCandidats" method="post" id="editForm">
+                <input type="hidden" name="id" value="{{$apply->student->id}}">
+                @csrf
+                <label for="status">Statut du dossier de {{ $apply->student->lastname}} {{ $apply->student->firstname}}</label> : <br />
+                <select class="custom-select" name="status" id="status">
+                    @foreach($statuses as $status)
+                    <option value="{{$status->id}}">{{$status->libelle}}</option>
+                    @endforeach
+                </select>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                <div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
 <style>
     .well {
         margin-top: 2%;
@@ -60,26 +84,3 @@
 
     }
 </style>
-@section('contenu')
-<br />
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-8 bg-light">
-            <form action="/updateCandidats" method="post" id="editForm">
-                <input type="hidden" name="id" value="{{$apply->student->id}}">
-                @csrf
-                <label for="status">Statut du dossier de {{ $apply->student->lastname}} {{ $apply->student->firstname}}</label> : <br />
-                <select class="custom-select" name="status" id="status">
-                    @foreach($statuses as $status)
-                    <option value="{{$status->id}}">{{$status->libelle}}</option>
-                    @endforeach
-                </select>
-<p>
-                <button type="submit" class="btn btn-primary">Modifier</button>
-                <br></p>
-            </form>
-        </div>
-    </div>
-</div>
-    @endsection

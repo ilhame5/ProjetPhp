@@ -84,7 +84,6 @@ width:730px;
                         </div>
 
                         <button type="submit" class="btn btn-primary">Enrengistrer</button>
-                        <button type="reset" class="btn btn-danger">Annuler</button>
 					</form>
 				</div>
 			</div>

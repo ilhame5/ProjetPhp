@@ -128,7 +128,7 @@
                     <div class="form-group">
                         <input type="password" id="password-confirm" name="password_confirmation" placeholder="Confirmation mot de passe" class="form-control">
                         @if($errors->has('password_confirmation'))
-                        <p>{{ $errors->first('password_confirmation')}}</p>
+                        <p class="text-danger">{{ $errors->first('password_confirmation')}}</p>
                         @endif
                     </div>
 

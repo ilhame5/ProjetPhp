@@ -38,15 +38,15 @@
           <div class="form-group">
             <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="{{old('email')}}">
             @if($errors->has('email'))
-            <p>{{ $errors->first('email')}}</p>
+            <p class="text-danger">{{ $errors->first('email')}}</p>
             @endif
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Minimum 5 caracteres">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             @if($errors->has('password'))
-            <p>{{ $errors->first('password')}}</p>
+            <p class="text-danger">{{ $errors->first('password')}}</p>
             @endif
           </div>
 

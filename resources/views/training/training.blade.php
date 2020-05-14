@@ -26,23 +26,6 @@
 </body>
 @endsection
 @section('contenu')
-
-<style>
-  .well {
-    margin-top: 4%;
-  }
-
-  .form-legend {
-    padding-bottom: 2em;
-  }
-
-  div#form {
-
-    margin: auto;
-    width: 730px;
-
-  }
-</style>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2 well">
@@ -92,3 +75,20 @@
   </div>
 </div>
 @endsection
+
+<style>
+  .well {
+    margin-top: 4%;
+  }
+
+  .form-legend {
+    padding-bottom: 2em;
+  }
+
+  div#form {
+
+    margin: auto;
+    width: 730px;
+
+  }
+</style>
