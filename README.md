@@ -21,6 +21,7 @@ Renseigner des informations de configuration
       DB_PASSWORD=mot_de_passe
             
 Vous devrez utiliser la commande composer install --ignore-platform-reqs pour installer les paquets requis au projet et composer update pour les mettre à jour.
+
 Exécutez la commande : php artisan key:generate
 
 Création de la base de données (avec /sans les données):
