@@ -27,3 +27,8 @@ Création de la base de données (avec /sans les données):
  -Sans les données  Exécutez la commande : “php artisan migrate“
 
 Pour inserer l'admin dans la table teachers, executez: "php artisan db:seed --class=DatabaseSeeder"
+
+<h1> Lancement du projet </h1>
+
+Lancer le projet avec la commande: php artisan serve
+
