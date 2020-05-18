@@ -14,19 +14,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/home">Acceuil <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/deconnexion">Deconnexion </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/changePassword">Modifier mot de passe</a>
             </li>
-            @if(session('teacher')->email=="admin@parisnanterre.fr")
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/enseignants">Liste enseignants </a>
-            </li>
-            @endif
             @if(session('teacher')->email=="admin@parisnanterre.fr")
             <li class="nav-item">
                 <a class="nav-link" href="/teacherInscription">Ajout enseignant</a>

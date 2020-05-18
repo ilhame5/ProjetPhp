@@ -46,7 +46,7 @@ class LoginController extends Controller
         //dd(Auth::guard($student));
         if ($resultat) { //si un teacher existe avec ces identifiants ->ok
             session()->put('teacher', $teacher);
-            return redirect('admin/home');
+            return redirect('/candidats');
         } else { //sinon on renvoie vers le form
             return back()->withInput()->withErrors([
                 'email' => 'Vos identifiants sont incorrects.'

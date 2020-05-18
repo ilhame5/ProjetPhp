@@ -29,6 +29,6 @@ class RegisterController extends Controller
             'password' => request('password'),
         ]);
 
-        return redirect('/admin/enseignants');
+        return redirect('/candidats');
     }
 }
