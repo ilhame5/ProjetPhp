@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\apply;
 use App\Services\TeacherHelper;
+use App\Services\TeacherService;
 use App\status;
 use App\student;
 use App\teacher;
@@ -74,8 +75,8 @@ class TeacherController extends Controller
         $id = $request->id;
         $password = $request->password;
 
-        TeacherHelper::update($id, $password);
-        return redirect('/admin/home');
+        TeacherService::update($id, $password);
+        return redirect('/candidats');
     }
 
     public function getdownload(Request $request)

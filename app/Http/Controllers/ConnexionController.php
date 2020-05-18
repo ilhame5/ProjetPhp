@@ -28,15 +28,14 @@ class ConnexionController extends Controller
         ]);
 
         $student = student::where('email', $email)->first();
-        $libelle = auth()->user()->apply->status->libelle;
-        $incomplet = "Reçu incomplet en attente de complément";
 
         if ($resultat) {
+            $incomplet = "Reçu incomplet en attente de complément";
             session()->put('student', $student);
             if(empty(auth()->user()->apply)){
                 return redirect('/formation');
             }
-            elseif (isset(auth()->user()->apply) && auth()->user()->apply->folder_id != null && (strcmp($libelle, $incomplet) == 0)) {
+            elseif (isset(auth()->user()->apply) && auth()->user()->apply->folder_id != null && (strcmp(auth()->user()->apply->status->libelle, $incomplet) == 0)) {
                 return redirect('/candidature');
             }
             
