@@ -1,3 +1,5 @@
+<h1>Installation du projet</h1>
+
 <p>Télécharger via git le projet avec la commande: git clone https://github.com/ilhame5/ProjetPhp.git                            
 
 Installer composer
